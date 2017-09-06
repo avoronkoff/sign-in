@@ -1,0 +1,28 @@
+<div class="col-md-6 col-md-offset-3 well">
+  <h2>Register</h2>
+  <form name="form" (ngSubmit)="register(complexForm.value)" novalidate>
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid && complexForm.controls['firstName'].touched}">
+      <label>First Name</label>
+      <input type="text" class="form-control" name="firstName" [formControl]="complexForm.controls['firstName']"  required />
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['firstName'].valid && complexForm.controls['firstName'].touched">Wrong firstName</div>
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['lastName'].valid  && complexForm.controls['lastName'].touched}">
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="lastName" [formControl]="complexForm.controls['lastName']" required />
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['lastName'].valid && complexForm.controls['lastName'].touched">Wrong lastName</div>
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['userName'].valid  && complexForm.controls['userName'].touched}">
+      <label>Username</label>
+      <input type="text" class="form-control" name="userName" [formControl]="complexForm.controls['userName']"  required />
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['userName'].valid && complexForm.controls['userName'].touched">Wrong userName</div>
+    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+      <label>Password</label>
+      <input type="password" class="form-control" name="password" [formControl]="complexForm.controls['password']"  required />
+    </div>
+    <div class="alert alert-danger" *ngIf="!complexForm.controls['password'].valid && complexForm.controls['password'].touched">Wrong password</div>
+    <div class="form-group">
+      <button class="btn btn-primary" [disabled]="!complexForm.valid">Register</button>
+    </div>
+  </form>
+</div>
