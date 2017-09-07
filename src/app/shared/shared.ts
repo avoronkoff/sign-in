@@ -1,3 +1,5 @@
-/**
- * Created by javaDev on 06.09.2017.
- */
+import AppRegisterService from './services/app.register.service';
+
+export {
+  AppRegisterService
+};

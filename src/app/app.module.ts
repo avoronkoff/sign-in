@@ -4,18 +4,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './main/app.component';
 import { AppRegisterComponent } from './register/app.register.component';
+import { AppUserComponent } from './user/app.user.component';
+import { AppRoutingModule } from './app.routing.module';
+import { ApppNavbarComponent } from './navbar/app.navbar.component';
+
+import { AppRegisterService } from './shared/shared';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppRegisterComponent
+    AppRegisterComponent,
+    AppUserComponent,
+    ApppNavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [AppRegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
