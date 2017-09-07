@@ -1,21 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
-export class User {
-  constructor(
-    public firstName: string,
-    public lastName: string,
-    public userName: string,
-    public password: string) { }
-}
+import { User } from '../interfaces/app.user.interface';
+import { Info } from '../interfaces/app.info.interface';
 
 const users = [
   new User('test', 'test', 'test', '123456')
 ];
-
-export interface Info {
-  register: boolean;
-}
 
 @Injectable()
 export default class AppRegisterService {
@@ -24,8 +14,7 @@ export default class AppRegisterService {
     private _router: Router) {}
 
   logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('register');
+    this.removeStorage();
     this.info.register = false;
     this._router.navigate(['register']);
   }
@@ -33,13 +22,22 @@ export default class AppRegisterService {
   login(user) {
     const authenticatedUser = users.find(u => u.password === user.password);
     if (authenticatedUser && authenticatedUser.password === user.password) {
-      localStorage.setItem('user', authenticatedUser.toString());
-      localStorage.setItem('register', 'true');
+      this.setStorage(authenticatedUser);
       this._router.navigate(['/user']);
       this.info.register = localStorage.register;
+
       return true;
     }
     return false;
+  }
 
+  setStorage(authenticate): void {
+    localStorage.setItem('user', authenticate.toString());
+    localStorage.setItem('register', 'true');
+  }
+
+  removeStorage(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('register');
   }
 }

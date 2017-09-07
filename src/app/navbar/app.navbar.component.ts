@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppRegisterService } from '../shared/shared';
-import { Info } from '../shared/services/app.register.service';
+import { Info } from '../shared/interfaces/app.info.interface';
 
 @Component({
   selector: 'app-navbar',
